@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en" data-ink="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C23 Solar — Every day begins with free energy</title>
+  <meta name="description" content="C23 Solar designs and installs solar and battery storage for homes and businesses. Follow the sun down the page and estimate what your roof could generate.">
+  <meta name="theme-color" content="#7a8cd0">
+  <meta property="og:title" content="C23 Solar — Every day begins with free energy">
+  <meta property="og:description" content="Solar and battery storage for homes and businesses, designed around your roof.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1a2b'/%3E%3Ccircle cx='32' cy='36' r='14' fill='%23ffc94a'/%3E%3Crect y='40' width='64' height='24' fill='%230e1a2b'/%3E%3Crect x='10' y='40' width='44' height='3' rx='1.5' fill='%23ffc94a'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- The sky: a fixed backdrop driven by scroll position (see main.js) -->
+  <div class="sky" aria-hidden="true">
+    <canvas class="sky__stars" id="stars"></canvas>
+    <div class="sky__moon" id="moon"></div>
+    <div class="sky__sun" id="sun"></div>
+    <svg class="sky__hills" id="hills" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path class="hill hill--far" d="M0 190 C 180 120 330 150 520 185 C 720 222 860 110 1080 130 C 1240 144 1350 190 1440 170 L1440 320 L0 320Z"/>
+      <path class="hill hill--mid" d="M0 240 C 220 180 420 250 660 228 C 900 206 1040 170 1440 232 L1440 320 L0 320Z"/>
+      <g class="hill-panels">
+        <path d="M150 262l46-9 6 14-46 9zM214 250l46-8 6 14-46 8zM278 243l46-5 6 14-46 5zM342 240l46-2 6 14-46 2zM1010 222l46 3 6 14-46-3zM1074 226l46 5 6 14-46-5zM1138 232l46 6 6 14-46-6zM1202 240l46 7 6 14-46-7z"/>
+      </g>
+      <path class="hill hill--near" d="M0 284 C 260 250 520 262 760 276 C 1000 290 1200 262 1440 280 L1440 320 L0 320Z"/>
+    </svg>
+    <div class="sky__grain"></div>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="C23 Solar — home">
+      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path d="M7 19a9 9 0 0 1 18 0z" fill="currentColor"/><rect x="2" y="21.5" width="28" height="2.2" rx="1.1" fill="currentColor"/></svg>
+      <span>C23&nbsp;Solar</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#estimate">Estimate</a>
+      <a href="#process">Process</a>
+      <a href="#storage">Storage</a>
+    </nav>
+    <div class="nav__right">
+      <span class="clock" title="Time of day on this page"><i></i><span id="clock">06:20</span></span>
+      <a class="btn btn--small" href="#contact">Get a quote</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 01 · Dawn -->
+    <section class="hero" id="top" data-sky="dawn">
+      <div class="wrap">
+        <p class="eyebrow rise" style="--d:0">Solar &amp; storage for homes and businesses</p>
+        <h1 class="hero__title">
+          <span class="line"><span class="rise" style="--d:1">Every day begins</span></span>
+          <span class="line"><span class="rise" style="--d:2">with <em>free energy.</em></span></span>
+        </h1>
+        <p class="hero__lede rise" style="--d:3">The sun delivers it to your roof each morning. We build the systems that catch it, store it, and put it to work — designed properly, installed cleanly.</p>
+        <div class="hero__cta rise" style="--d:4">
+          <a class="btn" href="#estimate">Estimate your system</a>
+          <a class="link-arrow" href="#contact">Talk to us <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <p class="scroll-hint rise" style="--d:6"><span></span>Scroll to follow the sun</p>
+    </section>
+
+    <!-- 02 · Morning -->
+    <section class="section" id="services" data-sky="morning">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow">01 — What we do</p>
+          <h2>Three ways to put <em>daylight</em> on the payroll.</h2>
+        </header>
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card__num">A</span>
+            <h3>Solar for homes</h3>
+            <p>Rooftop systems sized to how your household actually uses power — not to whatever fits on a brochure.</p>
+            <ul>
+              <li>Roof &amp; shading survey</li>
+              <li>Tidy, low-profile mounting</li>
+              <li>Live generation monitoring</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">B</span>
+            <h3>Solar for business</h3>
+            <p>Turn warehouse roofs, car parks and unused land into a predictable, long-term energy supply.</p>
+            <ul>
+              <li>Load &amp; tariff analysis</li>
+              <li>Roof, carport &amp; ground mount</li>
+              <li>Grid connection handled</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <span class="card__num">C</span>
+            <h3>Battery storage</h3>
+            <p>Keep the midday surplus for the evening peak. Add it with new solar, or retrofit to a system you already own.</p>
+            <ul>
+              <li>Right-sized capacity</li>
+              <li>Backup-ready options</li>
+              <li>Smart charging schedules</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · Noon -->
+    <section class="section" id="estimate" data-sky="noon">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow">02 — Peak sun</p>
+          <h2>What could your roof <em>make?</em></h2>
+          <p class="section__lede">Move the sliders for a quick, honest first look. A proper survey replaces every one of these assumptions with a measurement.</p>
+        </header>
+
+        <div class="estimator reveal">
+          <form class="estimator__controls" onsubmit="return false">
+            <label class="field">
+              <span class="field__row"><span>System size</span><output id="o-size">6.0 kWp</output></span>
+              <input type="range" id="size" min="2" max="60" step="0.5" value="6">
+              <span class="field__hint"><span>Small home</span><span>Commercial roof</span></span>
+            </label>
+            <label class="field">
+              <span class="field__row"><span>Sunshine where you are</span><output id="o-sun">3.5 sun-hours / day</output></span>
+              <input type="range" id="sunh" min="2.5" max="6.5" step="0.1" value="3.5">
+              <span class="field__hint"><span>Cloudier</span><span>Sunnier</span></span>
+            </label>
+            <figure class="curve">
+              <svg viewBox="0 0 600 200" role="img" aria-label="Illustrative curve of solar generation across a day">
+                <defs>
+                  <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#ffc94a" stop-opacity=".95"/>
+                    <stop offset="1" stop-color="#ffc94a" stop-opacity=".08"/>
+                  </linearGradient>
+                </defs>
+                <path id="curve-area" fill="url(#curveFill)"/>
+                <path id="curve-line" fill="none" stroke="currentColor" stroke-width="2"/>
+                <line x1="0" y1="180" x2="600" y2="180" stroke="currentColor" stroke-opacity=".35"/>
+                <g font-size="12" fill="currentColor" fill-opacity=".7" text-anchor="middle">
+                  <text x="150" y="197">06:00</text><text x="300" y="197">12:00</text><text x="450" y="197">18:00</text>
+                </g>
+              </svg>
+              <figcaption>A typical clear day — <span id="o-peak">≈ 4.8 kW</span> at peak</figcaption>
+            </figure>
+          </form>
+
+          <div class="estimator__results" aria-live="polite">
+            <div class="stat stat--big">
+              <span class="stat__label">Energy per year</span>
+              <span class="stat__value"><span id="r-kwh">0</span><small> kWh</small></span>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Panels</span>
+              <span class="stat__value"><span id="r-panels">0</span></span>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Roof area</span>
+              <span class="stat__value"><span id="r-area">0</span><small> m²</small></span>
+              <span class="stat__sub" id="r-area-ft"></span>
+            </div>
+            <div class="stat">
+              <span class="stat__label">Electric driving</span>
+              <span class="stat__value"><span id="r-km">0</span><small> km</small></span>
+              <span class="stat__sub" id="r-mi"></span>
+            </div>
+            <a class="btn btn--wide" href="#contact" id="use-estimate">Get this designed properly</a>
+          </div>
+        </div>
+        <p class="fineprint reveal">Illustrative only. Assumes 435&nbsp;W panels of about 1.95&nbsp;m², an 80% system performance ratio, and an electric car using 17&nbsp;kWh per 100&nbsp;km. Real output depends on orientation, pitch, shading and local weather.</p>
+      </div>
+    </section>
+
+    <!-- 04 · Afternoon -->
+    <section class="section" id="process" data-sky="afternoon">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow">03 — How it goes</p>
+          <h2>Four steps. <em>No surprises.</em></h2>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__n">1</span>
+            <div><h3>Survey</h3><p>We look at your roof, your wiring and your bills, and tell you plainly whether solar stacks up.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">2</span>
+            <div><h3>Design</h3><p>A layout modelled for your site, with expected generation and a fixed, itemised price.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">3</span>
+            <div><h3>Install</h3><p>Our own crew, on agreed dates. Paperwork, permissions and the grid application are on us.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">4</span>
+            <div><h3>Switch on</h3><p>We commission the system, walk you through the app, and stay on call after the sun comes up.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 05 · Dusk -->
+    <section class="dusk" data-sky="dusk" aria-label="Sunset">
+      <div class="wrap">
+        <p class="dusk__line reveal">The sun sets.<br><em>Your power doesn’t have to.</em></p>
+      </div>
+    </section>
+
+    <!-- 06 · Night -->
+    <section class="section" id="storage" data-sky="night">
+      <div class="wrap storage">
+        <div class="storage__copy reveal">
+          <p class="eyebrow">04 — After dark</p>
+          <h2>Store the day. <em>Spend it at night.</em></h2>
+          <p class="section__lede">Most homes use the most electricity just as their panels stop producing. A battery closes that gap — charging from the midday surplus, then running the evening on sunshine you already caught.</p>
+          <ul class="ticks">
+            <li>Use more of what you generate</li>
+            <li>Lean on the grid less at peak times</li>
+            <li>Keep essentials running through an outage, with backup-ready systems</li>
+          </ul>
+        </div>
+        <div class="battery reveal" aria-hidden="true">
+          <div class="battery__cap"></div>
+          <div class="battery__body">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <p class="battery__label">Charged by daylight</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · Late -->
+    <section class="section section--contact" id="contact" data-sky="late">
+      <div class="wrap contact">
+        <header class="section__head reveal">
+          <p class="eyebrow">05 — Before tomorrow’s sunrise</p>
+          <h2>Tell us about your <em>roof.</em></h2>
+          <p class="section__lede">A few details is all we need to start. We’ll reply with next steps — no hard sell, no obligation.</p>
+        </header>
+        <!-- TODO: set data-email to the real enquiries address (or swap for a form backend) -->
+        <form class="form reveal" id="quote-form" data-email="hello@example.com" novalidate>
+          <label class="form__field"><span>Name</span><input name="name" autocomplete="name" required></label>
+          <label class="form__field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+          <label class="form__field"><span>Property</span>
+            <select name="type"><option>Home</option><option>Business</option><option>Land / other</option></select>
+          </label>
+          <label class="form__field"><span>Town or postcode</span><input name="location" autocomplete="postal-code"></label>
+          <label class="form__field form__field--full"><span>Anything we should know?</span><textarea name="message" rows="3"></textarea></label>
+          <div class="form__foot form__field--full">
+            <button class="btn" type="submit">Send enquiry</button>
+            <p class="form__status" id="form-status" role="status"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <svg class="footer__hills" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 110 C 240 50 420 120 660 98 C 900 76 1040 40 1440 102 L1440 200 L0 200Z" fill="#161d4d"/>
+      <path d="M150 122l46-9 6 14-46 9zM214 110l46-8 6 14-46 8zM278 103l46-5 6 14-46 5zM342 100l46-2 6 14-46 2zM1010 82l46 3 6 14-46-3zM1074 86l46 5 6 14-46-5zM1138 92l46 6 6 14-46-6zM1202 100l46 7 6 14-46-7z" fill="#4a57a8"/>
+      <path d="M0 150 C 260 116 520 128 760 142 C 1000 156 1200 128 1440 146 L1440 200 L0 200Z" fill="#050817"/>
+    </svg>
+    <div class="footer__bar">
+      <div class="wrap footer__inner">
+        <span class="brand brand--footer">C23&nbsp;Solar</span>
+        <span>Sunrise is at the top of the page. <a href="#top">Go again ↑</a></span>
+        <span>© <span id="year">2026</span> C23 Solar</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
