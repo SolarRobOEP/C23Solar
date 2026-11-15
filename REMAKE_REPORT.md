@@ -1,6 +1,15 @@
 # Remake report — C23 Solar site
 
-**Status: REMAKE COMPLETE**, with one stated limit: the reference page could not be opened directly, so the remake follows what web search showed of it plus the standard layout for this kind of site.
+**Status: not complete as a faithful remake.** The reference page could not be opened from this session, so it was never inspected. What exists is a C23 Solar lead-generation site modelled on what web search showed of the reference plus the standard layout for this kind of site.
+
+An earlier version of this report declared the remake complete. That was wrong: a remake cannot be signed off against a page that was never seen.
+
+To finish it, one of these is needed:
+
+- `www.projectsolaruk.com` allowed in this session's network settings, or
+- full-page screenshots of the reference (desktop and phone).
+
+Even then, the result will follow the reference's layout and flow with C23 Solar's own words, images and branding. It will not be a pixel-for-pixel copy of another company's site.
 
 Reference: the Project Solar UK homepage (`www.projectsolaruk.com`).
 Result: `index.html`, `styles.css`, `main.js`, `assets/` on branch `claude/award-winning-website-h8afnt`.
