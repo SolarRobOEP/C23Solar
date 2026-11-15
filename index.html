@@ -34,9 +34,10 @@
         <a href="#products">Products</a>
         <a href="#savings">Savings calculator</a>
         <a href="#how">How it works</a>
+        <a href="#about">About us</a>
         <a href="#faqs">FAQs</a>
       </nav>
-      <a class="btn btn--small" href="#quote">Get a free quote</a>
+      <a class="btn btn--small" href="#quote">Get my free quote</a>
     </div>
   </header>
 
@@ -65,17 +66,21 @@
           </div>
 
           <fieldset class="quote__step is-active" data-step="1">
-            <legend>What type of property is it?</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="property" value="House"><span>House</span></label>
-              <label class="choice"><input type="radio" name="property" value="Bungalow"><span>Bungalow</span></label>
-              <label class="choice"><input type="radio" name="property" value="Business premises"><span>Business</span></label>
-              <label class="choice"><input type="radio" name="property" value="Other"><span>Other</span></label>
+            <legend>Where is the property?</legend>
+            <div class="inputs inputs--1">
+              <label>Postcode<input name="postcode" autocomplete="postal-code" placeholder="e.g. L1 8JQ"></label>
             </div>
             <p class="quote__sub">Do you own the property?</p>
             <div class="choices">
               <label class="choice"><input type="radio" name="owner" value="Yes"><span>Yes</span></label>
               <label class="choice"><input type="radio" name="owner" value="No"><span>No</span></label>
+            </div>
+            <p class="quote__sub">What type of property is it?</p>
+            <div class="choices choices--4">
+              <label class="choice"><input type="radio" name="property" value="House"><span>House</span></label>
+              <label class="choice"><input type="radio" name="property" value="Bungalow"><span>Bungalow</span></label>
+              <label class="choice"><input type="radio" name="property" value="Business premises"><span>Business</span></label>
+              <label class="choice"><input type="radio" name="property" value="Other"><span>Other</span></label>
             </div>
           </fieldset>
 
@@ -100,8 +105,7 @@
             <div class="inputs">
               <label>Full name<input name="name" autocomplete="name"></label>
               <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
-              <label>Email<input name="email" type="email" autocomplete="email"></label>
-              <label>Postcode<input name="postcode" autocomplete="postal-code"></label>
+              <label class="inputs__full">Email<input name="email" type="email" autocomplete="email"></label>
             </div>
           </fieldset>
 
@@ -256,6 +260,21 @@
       </div>
     </section>
 
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="wrap about__grid reveal">
+        <div>
+          <p class="tag">About C23 Solar</p>
+          <h2>A solar company you can actually talk to.</h2>
+        </div>
+        <div class="about__copy">
+          <p>C23 Solar designs and installs solar panels and battery storage for homes and businesses. We keep it simple: look at your property properly, explain your options in plain English, and give you a clear price.</p>
+          <p>No call centres and no pressure — just a straight answer on whether solar is right for you.</p>
+          <a class="btn" href="tel:+447525743786">Call 07525 743786</a>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQs -->
     <section class="section section--tint" id="faqs">
       <div class="wrap faq">
@@ -266,6 +285,7 @@
         </header>
         <div class="faq__list reveal">
           <details open><summary>Do solar panels work on cloudy days?</summary><p>Yes. Panels generate from daylight, not just direct sunshine. Output is lower when it’s overcast and in winter, and higher on long, bright days — which is why estimates are worked out across a whole year.</p></details>
+          <details><summary>Who can get solar from C23 Solar?</summary><p>Homeowners and businesses who own their property. If you rent or lease, you’ll need your landlord’s written permission before anything can be installed. Tell us your situation in the quote form and we’ll let you know where you stand.</p></details>
           <details><summary>Do I need a battery?</summary><p>No, panels work without one. A battery lets you store surplus daytime generation and use it in the evening, so you buy less from the grid. Whether it’s worthwhile depends on when you use electricity; we’ll show you figures both ways.</p></details>
           <details><summary>Do I need planning permission?</summary><p>Most home installations in the UK fall under permitted development, so they don’t. Exceptions can include listed buildings, conservation areas and some flat roofs. We check this as part of your survey.</p></details>
           <details><summary>What is the Smart Export Guarantee?</summary><p>It’s a UK scheme under which licensed energy suppliers pay you for electricity you export to the grid. Rates vary between suppliers and tariffs, so it’s worth comparing them once your system is installed.</p></details>
@@ -291,7 +311,7 @@
       <img class="footer__logo" src="assets/c23-solar-lockup.svg" alt="C23 Solar — Be part of the future" width="150" height="197">
       <nav aria-label="Footer">
         <h3>Explore</h3>
-        <a href="#why">Why solar</a><a href="#products">Products</a><a href="#savings">Savings calculator</a><a href="#how">How it works</a><a href="#faqs">FAQs</a>
+        <a href="#why">Why solar</a><a href="#products">Products</a><a href="#savings">Savings calculator</a><a href="#how">How it works</a><a href="#about">About us</a><a href="#faqs">FAQs</a>
       </nav>
       <div>
         <h3>Contact</h3>

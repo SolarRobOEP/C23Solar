@@ -109,10 +109,14 @@ h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -.015em; line-height:
 .inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .inputs label { display: grid; gap: 5px; font-size: .82rem; font-weight: 600; color: var(--ink-soft); }
 .inputs input { font: 500 1rem var(--sans); color: var(--ink); padding: 13px 14px; border: 2px solid var(--line); border-radius: 12px; width: 100%; transition: border-color .2s; }
+.inputs--1 { grid-template-columns: 1fr; }
+.inputs__full { grid-column: 1 / -1; }
+.choices--4 { grid-template-columns: repeat(4, 1fr); }
+.choices--4 .choice span { padding-inline: 4px; font-size: .88rem; }
 .inputs input:focus { outline: 0; border-color: var(--teal-dark); }
 .inputs input.invalid { border-color: #d5473a; }
 .quote__status { font-size: .9rem; font-weight: 600; color: #b3372b; }
-.quote__status:empty { display: none; }
+.quote__status { min-height: 1.5em; margin-block: -6px; }
 .quote__status.ok { color: var(--teal-dark); }
 .quote__nav { display: flex; gap: 10px; }
 .quote__nav .btn { flex: 1; }
@@ -205,6 +209,15 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border-radius
 .step span { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--black); color: var(--teal); font-weight: 800; font-size: 1.3rem; margin-bottom: 24px; box-shadow: 0 0 0 8px var(--white); }
 .step p { margin-top: 8px; color: var(--ink-soft); font-size: .96em; max-width: 22em; }
 
+/* ---------- About ---------- */
+.about { background: var(--teal); color: #0c1513; padding: clamp(56px, 7vw, 100px) 0; }
+.about .tag { color: #0c1513; opacity: .7; }
+.about h2 { margin-top: 12px; }
+.about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 80px); align-items: center; }
+.about__copy { display: grid; gap: 16px; justify-items: start; font-size: 1.08em; font-weight: 500; }
+.about .btn { background: var(--black); border-color: var(--black); color: #fff; margin-top: 8px; }
+.about .btn:hover { background: #000; box-shadow: 0 12px 28px -12px rgb(0 0 0 / .7); }
+
 /* ---------- FAQ ---------- */
 .faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(28px, 5vw, 80px); align-items: start; }
 .faq .head { margin: 0; position: sticky; top: 110px; }
@@ -246,7 +259,7 @@ details p { padding: 0 24px 22px; color: var(--ink-soft); max-width: 46em; }
 /* ---------- Responsive ---------- */
 @media (max-width: 1020px) {
   .nav__links { display: none; }
-  .hero__grid, .calc, .faq { grid-template-columns: 1fr; }
+  .hero__grid, .calc, .faq, .about__grid { grid-template-columns: 1fr; }
   .faq .head { position: static; }
   .benefits, .strip__grid { grid-template-columns: 1fr 1fr; }
   .products { grid-template-columns: 1fr; max-width: 560px; }
@@ -263,6 +276,7 @@ details p { padding: 0 24px 22px; color: var(--ink-soft); max-width: 46em; }
   .nav__inner { justify-content: center; }
   .benefits, .strip__grid, .steps, .inputs, .footer__grid { grid-template-columns: 1fr; }
   .calc__results { grid-template-columns: 1fr 1fr; }
+  .choices--4 { grid-template-columns: 1fr 1fr; }
   .calc__results .stat:nth-child(4) { grid-column: 1 / -1; }
   body { padding-bottom: 68px; }
   .mobilebar { position: fixed; inset: auto 0 0 0; z-index: 40; display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); background: var(--black); box-shadow: 0 -10px 30px -10px rgb(0 0 0 / .5); }

@@ -50,6 +50,7 @@
     step.querySelectorAll('.inputs input').forEach((f) => {
       const v = f.value.trim();
       const bad = !v
+        || (f.name === 'postcode' && !/^[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}$/.test(v))
         || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(v))
         || (f.type === 'tel' && v.replace(/\D/g, '').length < 10);
       f.classList.toggle('invalid', bad);
