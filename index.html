@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>C23 Solar — Every day begins with free energy</title>
-  <meta name="description" content="C23 Solar designs and installs solar and battery storage for homes and businesses. Follow the sun down the page and estimate what your roof could generate.">
-  <meta name="theme-color" content="#7a8cd0">
+  <meta name="description" content="C23 Solar designs and installs solar panels and battery storage for homes and businesses. Be part of the future — follow the sun down the page and estimate what your roof could generate.">
+  <meta name="theme-color" content="#181818">
   <meta property="og:title" content="C23 Solar — Every day begins with free energy">
   <meta property="og:description" content="Solar and battery storage for homes and businesses, designed around your roof.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1a2b'/%3E%3Ccircle cx='32' cy='36' r='14' fill='%23ffc94a'/%3E%3Crect y='40' width='64' height='24' fill='%230e1a2b'/%3E%3Crect x='10' y='40' width='44' height='3' rx='1.5' fill='%23ffc94a'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,8 +37,7 @@
 
   <header class="nav" id="nav">
     <a class="brand" href="#top" aria-label="C23 Solar — home">
-      <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path d="M7 19a9 9 0 0 1 18 0z" fill="currentColor"/><rect x="2" y="21.5" width="28" height="2.2" rx="1.1" fill="currentColor"/></svg>
-      <span>C23&nbsp;Solar</span>
+      <img src="assets/c23-solar-logo.svg" alt="C23 Solar" width="44" height="50">
     </a>
     <nav class="nav__links" aria-label="Primary">
       <a href="#services">Services</a>
@@ -48,7 +47,7 @@
     </nav>
     <div class="nav__right">
       <span class="clock" title="Time of day on this page"><i></i><span id="clock">06:20</span></span>
-      <a class="btn btn--small" href="#contact">Get a quote</a>
+      <a class="btn btn--small btn--brand" href="#contact">Free quote</a>
     </div>
   </header>
 
@@ -56,7 +55,7 @@
     <!-- 01 · Dawn -->
     <section class="hero" id="top" data-sky="dawn">
       <div class="wrap">
-        <p class="eyebrow rise" style="--d:0">Solar &amp; storage for homes and businesses</p>
+        <p class="eyebrow rise" style="--d:0"><b>Be part of the future</b> — solar &amp; storage for homes and businesses</p>
         <h1 class="hero__title">
           <span class="line"><span class="rise" style="--d:1">Every day begins</span></span>
           <span class="line"><span class="rise" style="--d:2">with <em>free energy.</em></span></span>
@@ -64,7 +63,7 @@
         <p class="hero__lede rise" style="--d:3">The sun delivers it to your roof each morning. We build the systems that catch it, store it, and put it to work — designed properly, installed cleanly.</p>
         <div class="hero__cta rise" style="--d:4">
           <a class="btn" href="#estimate">Estimate your system</a>
-          <a class="link-arrow" href="#contact">Talk to us <span aria-hidden="true">→</span></a>
+          <a class="link-arrow" href="tel:+447525743786">Call 07525 743786 <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <p class="scroll-hint rise" style="--d:6"><span></span>Scroll to follow the sun</p>
@@ -129,8 +128,8 @@
               <span class="field__hint"><span>Small home</span><span>Commercial roof</span></span>
             </label>
             <label class="field">
-              <span class="field__row"><span>Sunshine where you are</span><output id="o-sun">3.5 sun-hours / day</output></span>
-              <input type="range" id="sunh" min="2.5" max="6.5" step="0.1" value="3.5">
+              <span class="field__row"><span>Sunshine where you are</span><output id="o-sun">2.8 sun-hours / day</output></span>
+              <input type="range" id="sunh" min="2" max="6" step="0.1" value="2.8">
               <span class="field__hint"><span>Cloudier</span><span>Sunnier</span></span>
             </label>
             <figure class="curve">
@@ -167,14 +166,14 @@
               <span class="stat__sub" id="r-area-ft"></span>
             </div>
             <div class="stat">
-              <span class="stat__label">Electric driving</span>
-              <span class="stat__value"><span id="r-km">0</span><small> km</small></span>
-              <span class="stat__sub" id="r-mi"></span>
+              <span class="stat__label">EV driving</span>
+              <span class="stat__value"><span id="r-mi">0</span><small> mi</small></span>
+              <span class="stat__sub">a year, in an EV</span>
             </div>
-            <a class="btn btn--wide" href="#contact" id="use-estimate">Get this designed properly</a>
+            <a class="btn btn--wide" href="#contact" id="use-estimate">Get my free quote</a>
           </div>
         </div>
-        <p class="fineprint reveal">Illustrative only. Assumes 435&nbsp;W panels of about 1.95&nbsp;m², an 80% system performance ratio, and an electric car using 17&nbsp;kWh per 100&nbsp;km. Real output depends on orientation, pitch, shading and local weather.</p>
+        <p class="fineprint reveal">Illustrative only. Assumes 435&nbsp;W panels of about 1.95&nbsp;m², an 80% system performance ratio, and an electric car doing about 3.6 miles per kWh. Real output depends on orientation, pitch, shading and local weather.</p>
       </div>
     </section>
 
@@ -241,11 +240,14 @@
       <div class="wrap contact">
         <header class="section__head reveal">
           <p class="eyebrow">05 — Before tomorrow’s sunrise</p>
-          <h2>Tell us about your <em>roof.</em></h2>
+          <h2>Get your <em>free</em> quote.</h2>
           <p class="section__lede">A few details is all we need to start. We’ll reply with next steps — no hard sell, no obligation.</p>
+          <p class="contact__direct">
+            <a href="tel:+447525743786">07525 743786</a>
+            <a href="mailto:enquiries@c23solar.co.uk">enquiries@c23solar.co.uk</a>
+          </p>
         </header>
-        <!-- TODO: set data-email to the real enquiries address (or swap for a form backend) -->
-        <form class="form reveal" id="quote-form" data-email="hello@example.com" novalidate>
+        <form class="form reveal" id="quote-form" data-email="enquiries@c23solar.co.uk" novalidate>
           <label class="form__field"><span>Name</span><input name="name" autocomplete="name" required></label>
           <label class="form__field"><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
           <label class="form__field"><span>Property</span>
@@ -264,15 +266,18 @@
 
   <footer class="footer">
     <svg class="footer__hills" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 110 C 240 50 420 120 660 98 C 900 76 1040 40 1440 102 L1440 200 L0 200Z" fill="#161d4d"/>
-      <path d="M150 122l46-9 6 14-46 9zM214 110l46-8 6 14-46 8zM278 103l46-5 6 14-46 5zM342 100l46-2 6 14-46 2zM1010 82l46 3 6 14-46-3zM1074 86l46 5 6 14-46-5zM1138 92l46 6 6 14-46-6zM1202 100l46 7 6 14-46-7z" fill="#4a57a8"/>
-      <path d="M0 150 C 260 116 520 128 760 142 C 1000 156 1200 128 1440 146 L1440 200 L0 200Z" fill="#050817"/>
+      <path d="M0 110 C 240 50 420 120 660 98 C 900 76 1040 40 1440 102 L1440 200 L0 200Z" fill="#12362f"/>
+      <path d="M150 122l46-9 6 14-46 9zM214 110l46-8 6 14-46 8zM278 103l46-5 6 14-46 5zM342 100l46-2 6 14-46 2zM1010 82l46 3 6 14-46-3zM1074 86l46 5 6 14-46-5zM1138 92l46 6 6 14-46-6zM1202 100l46 7 6 14-46-7z" fill="#4bc1a8"/>
+      <path d="M0 150 C 260 116 520 128 760 142 C 1000 156 1200 128 1440 146 L1440 200 L0 200Z" fill="#181818"/>
     </svg>
     <div class="footer__bar">
       <div class="wrap footer__inner">
-        <span class="brand brand--footer">C23&nbsp;Solar</span>
-        <span>Sunrise is at the top of the page. <a href="#top">Go again ↑</a></span>
-        <span>© <span id="year">2026</span> C23 Solar</span>
+        <img class="footer__logo" src="assets/c23-solar-lockup.svg" alt="C23 Solar — Be part of the future" width="150" height="197">
+        <div class="footer__cta">
+          <p>Get in touch for your <b>free</b> quote.</p>
+          <p>Call <a href="tel:+447525743786">07525 743786</a><br>or visit <a href="https://www.c23solar.co.uk">www.c23solar.co.uk</a></p>
+        </div>
+        <p class="footer__small">Sunrise is at the top of the page. <a href="#top">Go again ↑</a><br>© <span id="year">2026</span> C23 Solar Limited</p>
       </div>
     </div>
   </footer>

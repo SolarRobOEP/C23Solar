@@ -61,7 +61,7 @@
     root.style.setProperty('--bg-mid', rgb(mid));
     root.style.setProperty('--night', night.toFixed(3));
     root.dataset.ink = (t < 0.5 ? a : b).sky.ink;
-    if (themeMeta) themeMeta.content = rgb(top);
+    
 
     // Sun: left to right across the viewport, on a sine arc above the horizon.
     const day = (hour - SUNRISE) / (SUNSET - SUNRISE);
@@ -135,7 +135,7 @@
   /* ------------------------------------------------------------------ *
    * Estimator
    * ------------------------------------------------------------------ */
-  const PANEL_KW = 0.435, PANEL_M2 = 1.95, PERFORMANCE = 0.8, EV_KWH_PER_KM = 0.17;
+  const PANEL_KW = 0.435, PANEL_M2 = 1.95, PERFORMANCE = 0.8, EV_MILES_PER_KWH = 3.6;
   const size = $('size'), sunh = $('sunh');
   const fmt = (n) => Math.round(n).toLocaleString('en');
   const shown = {};
@@ -176,7 +176,7 @@
     const kwh = kwp * psh * 365 * PERFORMANCE;
     const panels = Math.ceil(kwp / PANEL_KW);
     const area = panels * PANEL_M2;
-    const km = kwh / EV_KWH_PER_KM;
+    const miles = kwh * EV_MILES_PER_KWH;
 
     $('o-size').textContent = `${kwp.toFixed(1)} kWp`;
     $('o-sun').textContent = `${psh.toFixed(1)} sun-hours / day`;
@@ -184,9 +184,8 @@
     setNumber('r-kwh', kwh);
     setNumber('r-panels', panels);
     setNumber('r-area', area);
-    setNumber('r-km', km);
+    setNumber('r-mi', miles);
     $('r-area-ft').textContent = `${fmt(area * 10.764)} sq ft`;
-    $('r-mi').textContent = `${fmt(km * 0.6214)} miles a year`;
 
     [size, sunh].forEach((r) => r.style.setProperty('--fill', `${((r.value - r.min) / (r.max - r.min)) * 100}%`));
     drawCurve(kwp, psh);
