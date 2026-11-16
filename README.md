@@ -12,6 +12,7 @@ Before launch:
 
 - Confirm the enquiries address (`data-email` on the quote form in `index.html`). The form currently opens the visitor's email app; swap in a form backend when hosting is chosen.
 - Review the draft copy and the calculator assumptions (constants at the top of the calculator block in `main.js`, mirrored in the small print under it).
-- Add real accreditations and reviews, and a battery installation photo (the battery card still uses a drawing).
+- Add real accreditations and reviews. No battery or inverter photo was found, so the battery card shows a solar-powered home; swap in a battery photo when one exists.
+- Picture rule: only C23 Solar logos and OEP/OENW installation photos. Never another company's people, projects, text or logos.
 
 The earlier scroll-driven "day of sunlight" design is in the git history.
