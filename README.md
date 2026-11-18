@@ -4,7 +4,7 @@ Marketing and lead-generation site for C23 Solar. Static — no build step: open
 
 - `index.html` — content
 - `styles.css` — design
-- `main.js` — three-step quote form and savings calculator
+- `main.js` — pop-up quote form, savings calculator, tabs and section menu
 - `assets/` — logo SVGs converted from the brand EPS artwork
 - `assets/photos/` — installation photos from the OEP SharePoint folder `OEP-Solar / 10. Branding_OK / Images for Mollie / Domestic`, resized with metadata removed
 

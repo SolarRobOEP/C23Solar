@@ -19,146 +19,178 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <div class="topbar">
-    <div class="wrap topbar__inner">
-      <span>Free, no-obligation quotes for homes &amp; businesses</span>
-      <a href="tel:+447525743786"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg> Call 07525 743786</a>
-    </div>
-  </div>
-
+  <!-- Header -->
   <header class="nav" id="nav">
     <div class="wrap nav__inner">
       <a class="brand" href="#top" aria-label="C23 Solar — home"><img src="assets/c23-solar-logo.svg" alt="C23 Solar" width="53" height="60"></a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="#why">Why solar</a>
-        <a href="#products">Products</a>
+        <div class="nav__group">
+          <button class="nav__parent" type="button" aria-expanded="false">Solar <span aria-hidden="true">▾</span></button>
+          <div class="nav__menu">
+            <a href="#why">Why go solar</a>
+            <a href="#products">Solar panels</a>
+            <a href="#products">Battery storage</a>
+            <a href="#savings">Savings calculator</a>
+          </div>
+        </div>
         <a href="#work">Our work</a>
-        <a href="#savings">Savings calculator</a>
-        <a href="#how">How it works</a>
-        <a href="#about">About us</a>
+        <a href="#about">About</a>
         <a href="#faqs">FAQs</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <a class="btn btn--small" href="#quote">Get my free quote</a>
+      <div class="nav__right">
+        <a class="nav__phone" href="tel:+447525743786"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg><span>07525 743786</span></a>
+        <a class="btn btn--small" href="#contact" data-quote>Get My Free Quote</a>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero + quote form -->
+    <!-- Hero -->
     <section class="hero" id="top">
       <div class="hero__ring" aria-hidden="true"></div>
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <p class="tag">Be part of the future</p>
-          <h1>Solar panels that <span>cut your bills</span> from day one.</h1>
-          <p class="hero__lede">Generate your own clean electricity, store it for the evening and rely less on the grid. C23 Solar designs and installs systems built around your home.</p>
-          <ul class="checks">
-            <li>Free home survey and tailored design</li>
-            <li>Solar panels, battery storage or both</li>
-            <li>No-obligation quote, no pressure</li>
+          <p class="tag">Solar + Battery Systems</p>
+          <h1>Make your own power. <span>Keep more of your money.</span></h1>
+          <p class="hero__lede">C23 Solar designs and installs solar panels and battery storage around how your home really uses energy — surveyed in person, priced clearly, fitted properly.</p>
+          <ul class="hero__stats">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10M9.5 19.5v-5h5v5"/></svg><span><b>Free home survey</b>On your roof, not on a map</span></li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6zM8.5 12l2.5 2.5 4.5-5"/></svg><span><b>Fixed, itemised quote</b>No pressure, no obligation</span></li>
           </ul>
-          <p class="hero__call">Prefer to talk? <a href="tel:+447525743786">07525 743786</a></p>
+          <div class="hero__cta">
+            <a class="btn btn--big" href="#contact" data-quote>Get My Free Quote</a>
+            <a class="hero__call" href="tel:+447525743786">or call <b>07525 743786</b></a>
+          </div>
         </div>
-
-        <form class="quote" id="quote" data-email="rob@c23solar.co.uk" novalidate aria-labelledby="quote-title">
-          <div class="quote__head">
-            <h2 id="quote-title">Get your <span>free</span> quote</h2>
-            <p>It takes about a minute. <span id="quote-step">Step 1 of 3</span></p>
-            <div class="quote__bar"><i id="quote-progress"></i></div>
-          </div>
-
-          <fieldset class="quote__step is-active" data-step="1">
-            <legend>Where is the property?</legend>
-            <div class="inputs inputs--1">
-              <label>Postcode<input name="postcode" autocomplete="postal-code" placeholder="e.g. L1 8JQ"></label>
-            </div>
-            <p class="quote__sub">Do you own the property?</p>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="owner" value="Yes"><span>Yes</span></label>
-              <label class="choice"><input type="radio" name="owner" value="No"><span>No</span></label>
-            </div>
-            <p class="quote__sub">What type of property is it?</p>
-            <div class="choices choices--4">
-              <label class="choice"><input type="radio" name="property" value="House"><span>House</span></label>
-              <label class="choice"><input type="radio" name="property" value="Bungalow"><span>Bungalow</span></label>
-              <label class="choice"><input type="radio" name="property" value="Business premises"><span>Business</span></label>
-              <label class="choice"><input type="radio" name="property" value="Other"><span>Other</span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="quote__step" data-step="2">
-            <legend>What are you interested in?</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="interest" value="Solar panels"><span>Solar panels</span></label>
-              <label class="choice"><input type="radio" name="interest" value="Battery storage"><span>Battery storage</span></label>
-              <label class="choice choice--wide"><input type="radio" name="interest" value="Solar panels and battery"><span>Solar panels + battery</span></label>
-            </div>
-            <p class="quote__sub">Roughly, your monthly electricity bill?</p>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="bill" value="Under £75"><span>Under £75</span></label>
-              <label class="choice"><input type="radio" name="bill" value="£75–£150"><span>£75–£150</span></label>
-              <label class="choice"><input type="radio" name="bill" value="£150–£250"><span>£150–£250</span></label>
-              <label class="choice"><input type="radio" name="bill" value="Over £250"><span>Over £250</span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="quote__step" data-step="3">
-            <legend>Where should we send your quote?</legend>
-            <div class="inputs">
-              <label>Full name<input name="name" autocomplete="name"></label>
-              <label>Phone<input name="phone" type="tel" autocomplete="tel"></label>
-              <label class="inputs__full">Email<input name="email" type="email" autocomplete="email"></label>
-            </div>
-          </fieldset>
-
-          <p class="quote__status" id="quote-status" role="status"></p>
-          <div class="quote__nav">
-            <button class="btn btn--ghost" type="button" id="quote-back" hidden>Back</button>
-            <button class="btn" type="button" id="quote-next">Continue</button>
-          </div>
-          <p class="quote__note">No obligation. We only use your details to reply to your enquiry.</p>
-        </form>
+        <figure class="hero__media">
+          <img src="assets/photos/install-home-evening.jpg" alt="A semi-detached home with all-black solar panels on its roof under a clear blue sky" width="1400" height="898">
+          <figcaption><span class="dot" aria-hidden="true"></span>A recent installation by our team</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- Promise strip -->
     <section class="strip" aria-label="What you get">
       <div class="wrap strip__grid">
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10M9.5 19.5v-5h5v5"/></svg><b>Free survey</b><span>We assess your roof and usage first</span></div>
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM9 20h6M12 16v4M7.5 12l2.5-3 2.5 2 4-4"/></svg><b>Tailored design</b><span>Sized to how you use power</span></div>
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.5-3 8-7 9.5-4-1.5-7-5-7-9.5V6zM8.5 12l2.5 2.5 4.5-5"/></svg><b>Clear, itemised quote</b><span>You see exactly what you’re paying for</span></div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg><b>Solar panels</b><span>Tile, slate and steel roofs</span></div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10v15H7zM10 3h4v3M10 11l-1.5 3h3L10 17"/></svg><b>Battery storage</b><span>New or retrofitted</span></div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18V8l4-3 4 3v10M13 18h6v-6l-3-2-3 2M3 18h18"/></svg><b>Homes &amp; businesses</b><span>Domestic and commercial</span></div>
         <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0M4 13v4a2 2 0 0 0 2 2h1v-6H4M20 13v4a2 2 0 0 1-2 2h-1v-6h3"/></svg><b>Ongoing support</b><span>We’re here after switch-on</span></div>
       </div>
     </section>
 
-    <!-- Why solar -->
+    <!-- In-page section nav -->
+    <nav class="subnav" aria-label="On this page">
+      <div class="wrap subnav__inner">
+        <a href="#savings">Solar savings</a>
+        <a href="#why">Why solar?</a>
+        <a href="#work">Our work</a>
+        <a href="#warranties">Warranties</a>
+        <a href="#faqs">FAQs</a>
+      </div>
+    </nav>
+
+    <!-- Solar savings -->
+    <section class="section section--dark" id="savings">
+      <div class="wrap">
+        <header class="head reveal">
+          <p class="tag">Solar savings</p>
+          <h2>Stop renting your electricity. Start owning it.</h2>
+          <p>Tell us roughly what you spend and what your roof looks like, and see how your yearly bill could change.</p>
+        </header>
+        <div class="calc reveal">
+          <form class="calc__controls" onsubmit="return false">
+            <label class="field">
+              <span class="field__row"><span>Your monthly electricity bill</span><output id="o-bill">£110 a month</output></span>
+              <input type="range" id="bill" min="40" max="400" step="5" value="110">
+            </label>
+            <label class="field">
+              <span class="field__row"><span>Number of panels</span><output id="o-panels">10 panels · 4.35 kWp</output></span>
+              <input type="range" id="panels" min="4" max="30" step="1" value="10">
+            </label>
+            <fieldset class="field">
+              <legend>Which way does the roof face?</legend>
+              <div class="seg">
+                <label><input type="radio" name="facing" value="1" checked><span>South</span></label>
+                <label><input type="radio" name="facing" value="0.86"><span>East / West</span></label>
+                <label><input type="radio" name="facing" value="0.62"><span>North</span></label>
+              </div>
+            </fieldset>
+            <label class="switch">
+              <input type="checkbox" id="battery" checked>
+              <i aria-hidden="true"></i>
+              <span><b>Add battery storage</b><small>Use more of your own power in the evening</small></span>
+            </label>
+          </form>
+          <div class="calc__results" aria-live="polite">
+            <p class="stat__label">Estimated yearly benefit</p>
+            <p class="calc__big">£<span id="r-save">0</span></p>
+            <div class="bars">
+              <div class="bar">
+                <span class="bar__label">Energy bill without solar</span>
+                <span class="bar__track"><i id="bar-before" style="width:100%"></i></span>
+                <span class="bar__value">£<span id="r-before">0</span>/year</span>
+              </div>
+              <div class="bar bar--after">
+                <span class="bar__label">Energy bill with solar</span>
+                <span class="bar__track"><i id="bar-after" style="width:40%"></i></span>
+                <span class="bar__value">£<span id="r-after">0</span>/year</span>
+              </div>
+            </div>
+            <div class="calc__mini">
+              <span><b><span id="r-kwh">0</span></b> kWh generated a year</span>
+              <span><b><span id="r-self">0</span>%</b> used in your home</span>
+            </div>
+            <a class="btn btn--wide btn--dark" href="#contact" data-quote>Get My Free Quote</a>
+          </div>
+        </div>
+        <p class="fineprint reveal">Illustration only, not a quote or a guarantee. Treats your whole bill as electricity bought at 25p/kWh (standing charges are ignored), assumes 435&nbsp;W panels generating 950&nbsp;kWh per kWp a year when south-facing, exports paid at 12p/kWh, and 40% of generation used at home without a battery or 75% with one, capped at your usage. Actual results depend on your roof, usage and tariff.</p>
+      </div>
+    </section>
+
+    <!-- EV band -->
+    <section class="band" aria-label="EV charging">
+      <div class="wrap band__inner">
+        <svg class="band__icon" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="6" width="22" height="36" rx="5"/><path d="M30 16h4a4 4 0 0 1 4 4v12a3 3 0 0 0 6 0V18l-4-4M20 15l-5 9h7l-4 9"/></svg>
+        <p><b>Drive on sunshine.</b> Ask about adding a home EV charger when your solar is installed.</p>
+        <a class="btn btn--dark" href="#contact" data-quote>Ask in my quote</a>
+      </div>
+    </section>
+
+    <!-- Why solar: tabs -->
     <section class="section" id="why">
       <div class="wrap">
         <header class="head reveal">
-          <p class="tag">Why go solar</p>
-          <h2>Your roof could be earning its keep.</h2>
-          <p>Electricity you generate yourself is electricity you don’t have to buy. Here’s what that means in practice.</p>
+          <p class="tag">Why solar?</p>
+          <h2>A simple way to cut your energy bills.</h2>
+          <p>Panels make the power, a battery keeps it for later, and you decide how much you still need from the grid.</p>
         </header>
-        <div class="benefits">
-          <article class="benefit reveal">
-            <span class="benefit__n">01</span>
-            <h3>Lower electricity bills</h3>
-            <p>Every unit your panels produce and you use at home is one less bought from your supplier — for the life of the system.</p>
-          </article>
-          <article class="benefit reveal">
-            <span class="benefit__n">02</span>
-            <h3>Get paid for what you export</h3>
-            <p>Under the Smart Export Guarantee, energy suppliers pay you for surplus electricity you send back to the grid.</p>
-          </article>
-          <article class="benefit reveal">
-            <span class="benefit__n">03</span>
-            <h3>Protection from price rises</h3>
-            <p>The more of your own power you use, the less exposed you are the next time energy prices climb.</p>
-          </article>
-          <article class="benefit reveal">
-            <span class="benefit__n">04</span>
-            <h3>A smaller carbon footprint</h3>
-            <p>Solar generates electricity with no emissions at the point of use — quietly, with no moving parts.</p>
-          </article>
+        <div class="tabs reveal" data-tabs>
+          <div class="tabs__list" role="tablist" aria-label="Benefits of solar">
+            <button role="tab" id="t1" aria-controls="p1" aria-selected="true"><span>01</span>Take back control</button>
+            <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1"><span>02</span>Lower bills, year after year</button>
+            <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1"><span>03</span>Get paid for your surplus</button>
+            <button role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1"><span>04</span>Quick, tidy installation</button>
+          </div>
+          <div class="tabs__panels">
+            <div class="tabs__panel" role="tabpanel" id="p1" aria-labelledby="t1">
+              <img src="assets/photos/install-rooflights.jpg" alt="Solar panels arranged around three roof windows" loading="lazy" width="1200" height="900">
+              <div><h3>Take back control</h3><p>Every unit you generate is one you don’t have to buy. The more of your own power you use, the less exposed you are when energy prices climb — and the more predictable your bills become.</p></div>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+              <img src="assets/photos/install-slate.jpg" alt="All-black solar panels on a natural slate roof" loading="lazy" width="1200" height="1142">
+              <div><h3>Lower bills, year after year</h3><p>Panels have no moving parts and keep generating for decades. Add a battery and the daytime surplus runs your evenings too, when most homes use the most.</p></div>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+              <img src="assets/photos/install-clay-tiles.jpg" alt="Seven solar panels on an orange clay-tiled roof under a blue sky" loading="lazy" width="1200" height="702">
+              <div><h3>Get paid for your surplus</h3><p>Under the Smart Export Guarantee, licensed energy suppliers pay you for electricity you send back to the grid. We’ll explain how to compare export tariffs once you’re switched on.</p></div>
+            </div>
+            <div class="tabs__panel" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+              <img src="assets/photos/install-grey-tiles.jpg" alt="Six solar panels on a grey concrete-tiled roof" loading="lazy" width="1200" height="896">
+              <div><h3>Quick, tidy installation</h3><p>Once your design is agreed, we book the work on fixed dates, handle the paperwork and grid notification, and leave the site as we found it.</p></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -172,41 +204,41 @@
         </header>
         <div class="products">
           <article class="product reveal">
-            <div class="product__art product__art--photo"><img src="assets/photos/install-blue-sky.jpg" alt="Solar panels fitted to a tiled house roof under a clear blue sky" loading="lazy" width="1200" height="900"></div>
+            <div class="product__art"><img src="assets/photos/install-blue-sky.jpg" alt="Solar panels fitted to a tiled house roof under a clear blue sky" loading="lazy" width="1400" height="1157"></div>
             <h3>Solar panels</h3>
             <p>High-efficiency panels on low-profile mounting, laid out to get the most from your roof’s direction, pitch and shading.</p>
             <ul><li>Roof and shading survey</li><li>Neat cabling and tidy finish</li><li>App monitoring of live generation</li></ul>
-            <a class="more" href="#quote">Quote for solar panels <span aria-hidden="true">→</span></a>
+            <a class="more" href="#contact" data-quote>Quote for solar panels <span aria-hidden="true">→</span></a>
           </article>
           <article class="product reveal">
-            <div class="product__art product__art--photo"><img src="assets/photos/install-home-evening.jpg" alt="A semi-detached home with all-black solar panels on its roof under a clear blue sky" loading="lazy" width="1400" height="898"></div>
+            <div class="product__art"><img src="assets/photos/install-red-roof.jpg" alt="Solar panels on a red clay-tiled house roof on a sunny day" loading="lazy" width="1200" height="1302"></div>
             <h3>Battery storage</h3>
-            <p>Store the midday surplus and use it in the evening, when most homes need power the most. Add it now or retrofit later.</p>
+            <p>Store the midday surplus and use it in the evening. Add a battery with new panels, or retrofit one to the system you already have.</p>
             <ul><li>Sized to your evening usage</li><li>Works with new or existing solar</li><li>Backup-ready options available</li></ul>
-            <a class="more" href="#quote">Quote for a battery <span aria-hidden="true">→</span></a>
+            <a class="more" href="#contact" data-quote>Quote for a battery <span aria-hidden="true">→</span></a>
           </article>
           <article class="product reveal">
-            <div class="product__art product__art--photo"><img src="assets/photos/install-barn.jpg" alt="Rows of solar panels along the roof of a green agricultural building" loading="lazy" width="1200" height="900"></div>
+            <div class="product__art"><img src="assets/photos/install-barn.jpg" alt="Rows of solar panels along the roof of a green agricultural building" loading="lazy" width="1200" height="1120"></div>
             <h3>Solar for business</h3>
             <p>Put warehouse, office and farm roofs to work with a system that offsets daytime demand and steadies your energy costs.</p>
             <ul><li>Load and tariff analysis</li><li>Roof, carport and ground mount</li><li>Grid application handled for you</li></ul>
-            <a class="more" href="#quote">Quote for your business <span aria-hidden="true">→</span></a>
+            <a class="more" href="#contact" data-quote>Quote for your business <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Installations gallery -->
+    <!-- Our work -->
     <section class="section" id="work">
       <div class="wrap">
         <header class="head reveal">
-          <p class="tag">Recent installations</p>
+          <p class="tag">Our work</p>
           <h2>Real roofs, real systems.</h2>
           <p>Tile, slate or steel — every roof is surveyed first, then fitted with a layout made for it.</p>
         </header>
         <div class="gallery reveal">
           <figure class="gallery__item gallery__item--wide"><img src="assets/photos/install-large-roof.jpg" alt="Three arrays of solar panels across a large slate-grey roof" loading="lazy" width="1200" height="675"></figure>
-          <figure class="gallery__item"><img src="assets/photos/install-red-roof.jpg" alt="Solar panels on a red clay-tiled house roof on a sunny day" loading="lazy" width="1200" height="1302"></figure>
+          <figure class="gallery__item"><img src="assets/photos/install-red-roof.jpg" alt="Solar panels on a red clay-tiled house roof" loading="lazy" width="1200" height="1302"></figure>
           <figure class="gallery__item"><img src="assets/photos/install-rooflights.jpg" alt="Solar panels arranged around three roof windows" loading="lazy" width="1200" height="900"></figure>
           <figure class="gallery__item"><img src="assets/photos/install-slate.jpg" alt="All-black solar panels on a natural slate roof" loading="lazy" width="1200" height="1142"></figure>
           <figure class="gallery__item"><img src="assets/photos/install-grey-tiles.jpg" alt="Six solar panels on a grey concrete-tiled roof" loading="lazy" width="1200" height="896"></figure>
@@ -215,82 +247,42 @@
       </div>
     </section>
 
-    <!-- Savings calculator -->
-    <section class="section section--dark" id="savings">
-      <div class="wrap">
-        <header class="head reveal">
-          <p class="tag">Savings calculator</p>
-          <h2>See what solar could be worth to you.</h2>
-          <p>A quick illustration using typical UK figures. Your free survey replaces these assumptions with real measurements.</p>
-        </header>
-        <div class="calc reveal">
-          <form class="calc__controls" onsubmit="return false">
-            <label class="field">
-              <span class="field__row"><span>Number of panels</span><output id="o-panels">10 panels · 4.35 kWp</output></span>
-              <input type="range" id="panels" min="4" max="30" step="1" value="10">
-            </label>
-            <fieldset class="field">
-              <legend>Which way does the roof face?</legend>
-              <div class="seg" id="facing">
-                <label><input type="radio" name="facing" value="1" checked><span>South</span></label>
-                <label><input type="radio" name="facing" value="0.86"><span>East / West</span></label>
-                <label><input type="radio" name="facing" value="0.62"><span>North</span></label>
-              </div>
-            </fieldset>
-            <label class="switch">
-              <input type="checkbox" id="battery" checked>
-              <i aria-hidden="true"></i>
-              <span><b>Add battery storage</b><small>Use more of your own power in the evening</small></span>
-            </label>
-          </form>
-          <div class="calc__results" aria-live="polite">
-            <div class="stat stat--big">
-              <span class="stat__label">Estimated benefit per year</span>
-              <span class="stat__value">£<span id="r-save">0</span></span>
-            </div>
-            <div class="stat"><span class="stat__label">Generated</span><span class="stat__value"><span id="r-kwh">0</span><small> kWh / yr</small></span></div>
-            <div class="stat"><span class="stat__label">Used at home</span><span class="stat__value"><span id="r-self">0</span><small>%</small></span></div>
-            <div class="stat"><span class="stat__label">Over 25 years</span><span class="stat__value">£<span id="r-life">0</span></span></div>
-            <a class="btn btn--wide" href="#quote">Get my free quote</a>
-          </div>
-        </div>
-        <p class="fineprint reveal">Illustration only, not a quote or a guarantee. Assumes 435&nbsp;W panels generating 950&nbsp;kWh per kWp a year when south-facing, electricity bought at 25p/kWh, exported at 12p/kWh, and 40% of generation used at home without a battery or 75% with one. The 25-year figure is the yearly figure multiplied by 25 at today’s prices. Actual results depend on your roof, usage and tariff.</p>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section class="section" id="how">
-      <div class="wrap">
-        <header class="head reveal">
-          <p class="tag">How it works</p>
-          <h2>From first call to switch-on in four steps.</h2>
-        </header>
-        <ol class="steps">
-          <li class="step reveal"><span>1</span><h3>Free quote</h3><p>Tell us about your property. We’ll talk through your options and give you an initial price.</p></li>
-          <li class="step reveal"><span>2</span><h3>Home survey</h3><p>We check your roof, wiring and usage, then design a system that fits them properly.</p></li>
-          <li class="step reveal"><span>3</span><h3>Installation</h3><p>We install on agreed dates and handle the paperwork and grid notification for you.</p></li>
-          <li class="step reveal"><span>4</span><h3>Switch on</h3><p>We commission the system, set up your monitoring app and stay on hand afterwards.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- About -->
+    <!-- About / team -->
     <section class="about" id="about">
-      <div class="wrap about__grid reveal">
-        <div>
+      <div class="wrap about__grid">
+        <div class="reveal">
           <p class="tag">About C23 Solar</p>
-          <h2>A solar company you can actually talk to.</h2>
+          <h2>Not just panels. People you can actually talk to.</h2>
+          <p class="about__lede">We look at your property properly, explain your options in plain English and give you a clear price. No call centres and no pressure — just a straight answer on whether solar is right for you.</p>
         </div>
-        <div class="about__copy">
-          <p>C23 Solar designs and installs solar panels and battery storage for homes and businesses. We keep it simple: look at your property properly, explain your options in plain English, and give you a clear price.</p>
-          <p>No call centres and no pressure — just a straight answer on whether solar is right for you.</p>
-          <a class="btn" href="tel:+447525743786">Call 07525 743786</a>
+        <ul class="about__points reveal">
+          <li><b>Surveyed in person</b><span>We visit and check your roof, wiring and usage before we design anything.</span></li>
+          <li><b>Designed for your home</b><span>System size is based on how you use power, not an off-the-shelf package.</span></li>
+          <li><b>Kept informed</b><span>You know what’s happening and when, from survey to switch-on.</span></li>
+          <li><b>Ongoing support</b><span>Questions after installation? Call the same team that fitted it.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Warranties -->
+    <section class="section section--tint" id="warranties">
+      <div class="wrap">
+        <header class="head reveal">
+          <p class="tag">Warranties</p>
+          <h2>Protected from the roof down.</h2>
+          <p>Every system is covered by manufacturer product warranties plus our own workmanship guarantee. Exact terms for your panels, inverter and battery are set out in your quote.</p>
+        </header>
+        <div class="warranties reveal">
+          <div><span class="warranties__k">Panels</span><b>Manufacturer warranty</b></div>
+          <div><span class="warranties__k">Inverter</span><b>Manufacturer warranty</b></div>
+          <div><span class="warranties__k">Battery</span><b>Manufacturer warranty</b></div>
+          <div><span class="warranties__k">Installation</span><b>Workmanship guarantee</b></div>
         </div>
       </div>
     </section>
 
     <!-- FAQs -->
-    <section class="section section--tint" id="faqs">
+    <section class="section" id="faqs">
       <div class="wrap faq">
         <header class="head reveal">
           <p class="tag">FAQs</p>
@@ -298,24 +290,24 @@
           <p>Something else on your mind? Call <a href="tel:+447525743786">07525&nbsp;743786</a> and ask.</p>
         </header>
         <div class="faq__list reveal">
-          <details open><summary>Do solar panels work on cloudy days?</summary><p>Yes. Panels generate from daylight, not just direct sunshine. Output is lower when it’s overcast and in winter, and higher on long, bright days — which is why estimates are worked out across a whole year.</p></details>
-          <details><summary>Who can get solar from C23 Solar?</summary><p>Homeowners and businesses who own their property. If you rent or lease, you’ll need your landlord’s written permission before anything can be installed. Tell us your situation in the quote form and we’ll let you know where you stand.</p></details>
+          <details open><summary>How do I get started?</summary><p>Fill in the free quote form — it takes about a minute. We’ll get in touch to talk through your options, then arrange a survey so your quote is based on your actual roof and usage.</p></details>
+          <details><summary>Who can get solar from C23 Solar?</summary><p>Homeowners and businesses who own their property. If you rent or lease, you’ll need your landlord’s written permission before anything can be installed. Flats are often unsuitable because of shared roofs, but tell us your situation and we’ll let you know.</p></details>
+          <details><summary>Do solar panels work on cloudy days?</summary><p>Yes. Panels generate from daylight, not just direct sunshine. Output is lower when it’s overcast and in winter, and higher on long, bright days — which is why estimates are worked out across a whole year.</p></details>
           <details><summary>Do I need a battery?</summary><p>No, panels work without one. A battery lets you store surplus daytime generation and use it in the evening, so you buy less from the grid. Whether it’s worthwhile depends on when you use electricity; we’ll show you figures both ways.</p></details>
           <details><summary>Do I need planning permission?</summary><p>Most home installations in the UK fall under permitted development, so they don’t. Exceptions can include listed buildings, conservation areas and some flat roofs. We check this as part of your survey.</p></details>
           <details><summary>What is the Smart Export Guarantee?</summary><p>It’s a UK scheme under which licensed energy suppliers pay you for electricity you export to the grid. Rates vary between suppliers and tariffs, so it’s worth comparing them once your system is installed.</p></details>
-          <details><summary>How much maintenance do panels need?</summary><p>Very little. There are no moving parts, and rain keeps most roofs clean enough. Your monitoring app shows generation, so any drop in performance is easy to spot.</p></details>
-          <details><summary>Is my roof suitable?</summary><p>South-facing roofs generate the most, but east- and west-facing roofs work well too. Shading, roof condition and available space all matter — the free survey gives you a straight answer.</p></details>
         </div>
       </div>
     </section>
 
-    <!-- Closing CTA -->
-    <section class="cta">
+    <!-- Closing CTA / no-JS contact -->
+    <section class="cta" id="contact">
       <div class="cta__ring" aria-hidden="true"></div>
       <div class="wrap cta__inner reveal">
+        <p class="tag">Be part of the future</p>
         <h2>Get in touch for your <span>free</span> quote now.</h2>
         <p>Call <a href="tel:+447525743786">07525 743786</a> or email <a href="mailto:rob@c23solar.co.uk">rob@c23solar.co.uk</a></p>
-        <a class="btn btn--big" href="#quote">Start my free quote</a>
+        <a class="btn btn--big" href="mailto:rob@c23solar.co.uk" data-quote>Get My Free Quote</a>
       </div>
     </section>
   </main>
@@ -324,8 +316,12 @@
     <div class="wrap footer__grid">
       <img class="footer__logo" src="assets/c23-solar-lockup.svg" alt="C23 Solar — Be part of the future" width="150" height="197">
       <nav aria-label="Footer">
-        <h3>Explore</h3>
-        <a href="#why">Why solar</a><a href="#products">Products</a><a href="#savings">Savings calculator</a><a href="#how">How it works</a><a href="#about">About us</a><a href="#faqs">FAQs</a>
+        <h3>Solar</h3>
+        <a href="#why">Why go solar</a><a href="#products">Solar panels</a><a href="#products">Battery storage</a><a href="#savings">Savings calculator</a>
+      </nav>
+      <nav aria-label="Company">
+        <h3>Company</h3>
+        <a href="#about">About</a><a href="#work">Our work</a><a href="#warranties">Warranties</a><a href="#faqs">FAQs</a>
       </nav>
       <div>
         <h3>Contact</h3>
@@ -339,8 +335,63 @@
 
   <div class="mobilebar">
     <a href="tel:+447525743786">Call us</a>
-    <a class="is-primary" href="#quote">Free quote</a>
+    <a class="is-primary" href="#contact" data-quote>Free quote</a>
   </div>
+
+  <!-- Quote form (opens from every "Get My Free Quote" button) -->
+  <dialog class="quote" id="quote" aria-labelledby="quote-title">
+    <form method="dialog" class="quote__form" id="quote-form" data-email="rob@c23solar.co.uk" novalidate>
+      <button class="quote__close" type="button" id="quote-close" aria-label="Close">×</button>
+      <div class="quote__head">
+        <img src="assets/c23-solar-logo.svg" alt="" width="40" height="45">
+        <h2 id="quote-title">Get your <span>free</span> quote</h2>
+        <p>It takes about a minute. <span id="quote-step">Step 1 of 4</span></p>
+        <div class="quote__bar"><i id="quote-progress"></i></div>
+      </div>
+
+      <fieldset class="quote__step is-active">
+        <legend>Where is the property?</legend>
+        <label class="inputs__one">Postcode<input name="postcode" autocomplete="postal-code" placeholder="e.g. L1 8JQ"></label>
+      </fieldset>
+
+      <fieldset class="quote__step">
+        <legend>Do you own the property?</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="owner" value="Yes"><span>Yes</span></label>
+          <label class="choice"><input type="radio" name="owner" value="No"><span>No</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="quote__step">
+        <legend>What type of property is it?</legend>
+        <div class="choices choices--3">
+          <label class="choice"><input type="radio" name="property" value="Detached"><span>Detached</span></label>
+          <label class="choice"><input type="radio" name="property" value="Semi-detached"><span>Semi-detached</span></label>
+          <label class="choice"><input type="radio" name="property" value="Terraced"><span>Terraced</span></label>
+          <label class="choice"><input type="radio" name="property" value="Bungalow"><span>Bungalow</span></label>
+          <label class="choice"><input type="radio" name="property" value="Flat"><span>Flat</span></label>
+          <label class="choice"><input type="radio" name="property" value="Business premises"><span>Business</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="quote__step">
+        <legend>Where should we send your quote?</legend>
+        <div class="inputs">
+          <label>First name<input name="first" autocomplete="given-name"></label>
+          <label>Last name<input name="last" autocomplete="family-name"></label>
+          <label class="inputs__full">Email<input name="email" type="email" autocomplete="email"></label>
+          <label class="inputs__full">Phone<input name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+      </fieldset>
+
+      <p class="quote__status" id="quote-status" role="status"></p>
+      <div class="quote__nav">
+        <button class="btn btn--ghost" type="button" id="quote-back" hidden>Back</button>
+        <button class="btn" type="button" id="quote-next">Next</button>
+      </div>
+      <p class="quote__note">No obligation. We only use your details to reply to your enquiry.</p>
+    </form>
+  </dialog>
 
   <script src="main.js" defer></script>
 </body>

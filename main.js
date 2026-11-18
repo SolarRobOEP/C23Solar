@@ -1,28 +1,74 @@
-/* C23 Solar — quote form, savings calculator and small interactions. No dependencies. */
+/* C23 Solar — quote dialog, savings calculator, tabs and small interactions. No dependencies. */
 (() => {
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (id) => document.getElementById(id);
 
-  /* ---------- Nav shadow & reveal on scroll ---------- */
+  /* ---------- Header, dropdown, reveal ---------- */
   const nav = $('nav');
-  addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 40), { passive: true });
+  addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 20), { passive: true });
+
+  document.querySelectorAll('.nav__group').forEach((g) => {
+    const btn = g.querySelector('.nav__parent');
+    btn.addEventListener('click', () => {
+      const open = g.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    g.addEventListener('focusout', (e) => {
+      if (!g.contains(e.relatedTarget)) { g.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
+    });
+  });
 
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('in'));
   }
 
-  /* ---------- Three-step quote form ----------
-   * No backend yet: the final step opens the visitor's email app with the
-   * answers filled in, addressed to the form's data-email. */
-  const form = $('quote');
+  /* ---------- Sub-nav: highlight the section in view ---------- */
+  const subLinks = [...document.querySelectorAll('.subnav a')];
+  if ('IntersectionObserver' in window) {
+    const targets = subLinks.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        subLinks.forEach((a) => a.classList.toggle('is-current', a.getAttribute('href') === `#${e.target.id}`));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    targets.forEach((t) => spy.observe(t));
+  }
+
+  /* ---------- Tabs ---------- */
+  document.querySelectorAll('[data-tabs]').forEach((root) => {
+    const tabs = [...root.querySelectorAll('[role="tab"]')];
+    const select = (tab) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        $(t.getAttribute('aria-controls')).hidden = !on;
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t));
+      t.addEventListener('keydown', (e) => {
+        const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (!d) return;
+        e.preventDefault();
+        const n = tabs[(i + d + tabs.length) % tabs.length];
+        n.focus(); select(n);
+      });
+    });
+  });
+
+  /* ---------- Quote dialog ----------
+   * Every [data-quote] link opens it. No backend yet: the last step opens the
+   * visitor's email app addressed to the form's data-email. Without JS the
+   * links fall back to the contact section. */
+  const dialog = $('quote'), form = $('quote-form');
   const steps = [...form.querySelectorAll('.quote__step')];
   const next = $('quote-next'), back = $('quote-back'), status = $('quote-status');
   let current = 0;
@@ -33,24 +79,34 @@
     $('quote-step').textContent = `Step ${i + 1} of ${steps.length}`;
     $('quote-progress').style.width = `${((i + 1) / steps.length) * 100}%`;
     back.hidden = i === 0;
-    next.textContent = i === steps.length - 1 ? 'Get my free quote' : 'Continue';
+    next.textContent = i === steps.length - 1 ? 'Get my free quote' : 'Next';
     status.textContent = '';
     status.classList.remove('ok');
+    const first = steps[i].querySelector('input');
+    if (first && dialog.open) first.focus({ preventScroll: true });
   }
 
+  function openQuote(e) {
+    if (typeof dialog.showModal !== 'function') return; // old browsers follow the link
+    e.preventDefault();
+    if (!dialog.open) { show(0); dialog.showModal(); steps[0].querySelector('input').focus(); }
+  }
+  document.querySelectorAll('[data-quote]').forEach((a) => a.addEventListener('click', openQuote));
+  $('quote-close').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+
+  const POSTCODE = /^[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}$/;
   function stepValid(step) {
-    const groups = new Set([...step.querySelectorAll('input[type="radio"]')].map((r) => r.name));
-    for (const name of groups) {
-      if (!form.querySelector(`input[name="${name}"]:checked`)) {
-        status.textContent = 'Please choose an option for each question.';
-        return false;
-      }
+    const radios = step.querySelectorAll('input[type="radio"]');
+    if (radios.length && !step.querySelector('input:checked')) {
+      status.textContent = 'Please choose an option.';
+      return false;
     }
     let firstBad = null;
-    step.querySelectorAll('.inputs input').forEach((f) => {
+    step.querySelectorAll('input:not([type="radio"])').forEach((f) => {
       const v = f.value.trim();
       const bad = !v
-        || (f.name === 'postcode' && !/^[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}$/.test(v))
+        || (f.name === 'postcode' && !POSTCODE.test(v))
         || (f.type === 'email' && !/^\S+@\S+\.\S+$/.test(v))
         || (f.type === 'tel' && v.replace(/\D/g, '').length < 10);
       f.classList.toggle('invalid', bad);
@@ -59,7 +115,7 @@
     });
     if (firstBad) {
       firstBad.focus();
-      status.textContent = 'Please check the highlighted details.';
+      status.textContent = firstBad.name === 'postcode' ? 'Please enter a full UK postcode.' : 'Please check the highlighted details.';
       return false;
     }
     return true;
@@ -69,18 +125,26 @@
     if (!stepValid(steps[current])) return;
     if (current < steps.length - 1) { show(current + 1); return; }
     const v = Object.fromEntries(new FormData(form));
+    const name = `${v.first} ${v.last}`.trim();
     const body = [
-      `Name: ${v.name}`, `Phone: ${v.phone}`, `Email: ${v.email}`, `Postcode: ${v.postcode}`, '',
-      `Property: ${v.property}`, `Owner: ${v.owner}`, `Interested in: ${v.interest}`, `Monthly bill: ${v.bill}`,
+      `Name: ${name}`, `Phone: ${v.phone}`, `Email: ${v.email}`, `Postcode: ${v.postcode}`, '',
+      `Owns the property: ${v.owner}`, `Property type: ${v.property}`,
     ].join('\n');
-    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Free quote request — ${v.name}, ${v.postcode}`)}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Free quote request — ${name}, ${v.postcode}`)}&body=${encodeURIComponent(body)}`;
     status.textContent = 'Opening your email app — press send to reach us.';
     status.classList.add('ok');
   }
   next.addEventListener('click', advance);
   back.addEventListener('click', () => show(current - 1));
   form.addEventListener('submit', (e) => { e.preventDefault(); advance(); });
-  form.addEventListener('change', () => { if (!status.classList.contains('ok')) status.textContent = ''; });
+  form.addEventListener('keydown', (e) => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') { e.preventDefault(); advance(); } });
+  // Picking an option on a single-question step moves on automatically.
+  form.addEventListener('change', (e) => {
+    if (e.target.type === 'radio' && !status.classList.contains('ok')) {
+      status.textContent = '';
+      setTimeout(advance, reduceMotion ? 0 : 220);
+    }
+  });
 
   /* ---------- Savings calculator ----------
    * All assumptions live here and are printed under the calculator. */
@@ -89,9 +153,8 @@
   const IMPORT_PRICE = 0.25;      // £ per kWh bought
   const EXPORT_PRICE = 0.12;      // £ per kWh exported
   const SELF_USE = { solar: 0.4, battery: 0.75 };
-  const YEARS = 25;
 
-  const panels = $('panels'), battery = $('battery');
+  const bill = $('bill'), panels = $('panels'), battery = $('battery');
   const fmt = (n) => Math.round(n).toLocaleString('en-GB');
   const shown = {};
 
@@ -109,22 +172,30 @@
     requestAnimationFrame(tick);
   }
 
-  function calculate() {
-    const n = +panels.value;
-    const facing = +document.querySelector('input[name="facing"]:checked').value;
-    const self = battery.checked ? SELF_USE.battery : SELF_USE.solar;
-    const kwp = n * PANEL_KWP;
-    const kwh = kwp * YIELD * facing;
-    const yearly = kwh * self * IMPORT_PRICE + kwh * (1 - self) * EXPORT_PRICE;
+  const fill = (r) => r.style.setProperty('--fill', `${((r.value - r.min) / (r.max - r.min)) * 100}%`);
 
-    $('o-panels').textContent = `${n} panels · ${kwp.toFixed(2)} kWp`;
-    panels.style.setProperty('--fill', `${((n - panels.min) / (panels.max - panels.min)) * 100}%`);
-    setNumber('r-save', yearly);
+  function calculate() {
+    const n = +panels.value, monthly = +bill.value;
+    const facing = +document.querySelector('input[name="facing"]:checked').value;
+    const kwh = n * PANEL_KWP * YIELD * facing;
+    const before = monthly * 12;
+    const usage = before / IMPORT_PRICE;
+    const selfUsed = Math.min(kwh * (battery.checked ? SELF_USE.battery : SELF_USE.solar), usage);
+    const exported = kwh - selfUsed;
+    const saving = selfUsed * IMPORT_PRICE + exported * EXPORT_PRICE;
+    const after = Math.max(0, before - saving);
+
+    $('o-bill').textContent = `£${monthly} a month`;
+    $('o-panels').textContent = `${n} panels · ${(n * PANEL_KWP).toFixed(2)} kWp`;
+    [bill, panels].forEach(fill);
+    setNumber('r-save', Math.min(saving, before));
+    setNumber('r-before', before);
+    setNumber('r-after', after);
     setNumber('r-kwh', kwh);
-    setNumber('r-self', self * 100);
-    setNumber('r-life', yearly * YEARS);
+    setNumber('r-self', kwh ? (selfUsed / kwh) * 100 : 0);
+    $('bar-after').style.width = `${Math.max(2, (after / before) * 100)}%`;
   }
-  panels.addEventListener('input', calculate);
+  [bill, panels].forEach((r) => r.addEventListener('input', calculate));
   battery.addEventListener('change', calculate);
   document.querySelectorAll('input[name="facing"]').forEach((r) => r.addEventListener('change', calculate));
   calculate();
