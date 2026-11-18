@@ -57,7 +57,7 @@ Not tested: other browsers, a live host, or the final step actually sending an e
 
 ## Needs the owner before launch
 
-1. Confirm `enquiries@c23solar.co.uk` is live, or choose a form backend so enquiries send from the site.
+1. Confirm `rob@c23solar.co.uk` is live, or choose a form backend so enquiries send from the site.
 2. Confirm or replace the calculator assumptions (25p/kWh bought, 12p/kWh exported, 950 kWh per kWp, 40% or 75% used at home).
 3. Review all copy and FAQ answers; they are drafts and read as claims by the business.
 4. Supply real reviews, accreditations and installation photos; none are invented here.
