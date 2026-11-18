@@ -201,4 +201,10 @@
   calculate();
 
   $('year').textContent = new Date().getFullYear();
+
+  /* ---------- Installable app ----------
+   * The service worker only runs from an http(s) address, not a local file. */
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
 })();

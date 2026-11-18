@@ -1,0 +1,23 @@
+{
+  "name": "C23 Solar",
+  "short_name": "C23 Solar",
+  "description": "Solar panels and battery storage: savings calculator and free quotes.",
+  "id": "./",
+  "start_url": "./?source=app",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#181818",
+  "theme_color": "#181818",
+  "lang": "en-GB",
+  "categories": ["business", "utilities"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Get a free quote", "short_name": "Quote", "url": "./?source=app#contact", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Savings calculator", "short_name": "Calculator", "url": "./?source=app#savings", "icons": [{ "src": "assets/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
