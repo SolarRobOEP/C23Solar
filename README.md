@@ -17,3 +17,14 @@ Before launch:
 - Picture rule: only C23 Solar logos and OEP/OENW installation photos. Never another company's people, projects, text or logos.
 
 The earlier scroll-driven "day of sunlight" design is in the git history.
+
+## Local SEO pages
+
+`tools/build_site.py` generates a page for each area (`solar-panels-<area>/`), `404.html`, `sitemap.xml`, and the structured data and area links in `index.html`. Area wording lives in that script. After editing the header, footer or quote form in `index.html`, or the area text, run:
+
+    python3 tools/build_site.py
+
+## Hosting
+
+The live site is served by GitHub Pages from the `gh-pages` branch. After changing any CSS or JS, bump `VERSION` in `sw.js` so installed copies pick up the change.
+

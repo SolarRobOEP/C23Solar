@@ -1,5 +1,6 @@
 /* C23 Solar — quote dialog, savings calculator, tabs and small interactions. No dependencies. */
 (() => {
+  const ROOT = (document.currentScript && document.currentScript.dataset.root) || '';
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (id) => document.getElementById(id);
 
@@ -18,14 +19,13 @@
     });
   });
 
-  const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.remove('is-pending'); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add('in'));
+    document.querySelectorAll('.reveal').forEach((el) => {
+      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('is-pending'); io.observe(el); }
+    });
   }
 
   /* ---------- Sub-nav: highlight the section in view ---------- */
@@ -155,6 +155,7 @@
   const SELF_USE = { solar: 0.4, battery: 0.75 };
 
   const bill = $('bill'), panels = $('panels'), battery = $('battery');
+  if (bill) {
   const fmt = (n) => Math.round(n).toLocaleString('en-GB');
   const shown = {};
 
@@ -199,12 +200,13 @@
   battery.addEventListener('change', calculate);
   document.querySelectorAll('input[name="facing"]').forEach((r) => r.addEventListener('change', calculate));
   calculate();
+  }
 
   $('year').textContent = new Date().getFullYear();
 
   /* ---------- Installable app ----------
    * The service worker only runs from an http(s) address, not a local file. */
   if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-    addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    addEventListener('load', () => navigator.serviceWorker.register(ROOT + 'sw.js').catch(() => {}));
   }
 })();

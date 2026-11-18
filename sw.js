@@ -2,7 +2,7 @@
  * Pages are fetched fresh when online and fall back to the cached copy offline;
  * styles, scripts and images are served from the cache first.
  * Bump VERSION whenever any of the files below change so visitors get the update. */
-const VERSION = 'c23-v1';
+const VERSION = 'c23-v3';
 const SHELL = [
   './',
   './index.html',
@@ -46,8 +46,8 @@ self.addEventListener('fetch', (event) => {
   if (req.mode === 'navigate') {
     event.respondWith(
       fetch(req)
-        .then((res) => { const copy = res.clone(); caches.open(VERSION).then((c) => c.put('./index.html', copy)); return res; })
-        .catch(() => caches.match('./index.html'))
+        .then((res) => { if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); } return res; })
+        .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html')))
     );
     return;
   }
