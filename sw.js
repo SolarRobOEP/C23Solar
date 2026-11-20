@@ -1,8 +1,8 @@
 /* C23 Solar — offline support for the installed app.
  * Pages are fetched fresh when online and fall back to the cached copy offline;
- * styles, scripts and images are served from the cache first.
+ * scripts and styles likewise come fresh when online; images are served from the cache first.
  * Bump VERSION whenever any of the files below change so visitors get the update. */
-const VERSION = 'c23-v8';
+const VERSION = 'c23-v9';
 const SHELL = [
   './',
   './index.html',
@@ -48,6 +48,17 @@ self.addEventListener('fetch', (event) => {
       fetch(req)
         .then((res) => { if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); } return res; })
         .catch(() => caches.match(req).then((hit) => hit || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // Scripts, styles and the manifest: fresh from the network when online, so an update
+  // reaches visitors on their next load; the saved copy is only an offline fallback.
+  if (/\.(js|css|webmanifest)$/.test(url.pathname)) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => { if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); } return res; })
+        .catch(() => caches.match(req))
     );
     return;
   }
