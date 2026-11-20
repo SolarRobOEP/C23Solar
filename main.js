@@ -159,21 +159,28 @@
     next.textContent = 'Sending…';
     status.textContent = '';
     try {
-      const res = await fetch(form.dataset.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: form.dataset.key,
-          subject,
-          from_name: 'C23 Solar website',
-          replyto: v.email,
-          botcheck: Boolean(v.botcheck),
-          ...fields,
-          'Enquiry': body,
-        }),
-      });
-      const out = await res.json().catch(() => ({}));
-      if (!res.ok || out.success === false) throw new Error(out.message || `HTTP ${res.status}`);
+      // One send per inbox: the main key (rob@c23solar.co.uk) and, when set, a copy key
+      // (rob@oneenergyprojects.com, where C23 Leads imports from). Either getting through counts.
+      const send = async (key) => {
+        const res = await fetch(form.dataset.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: key,
+            subject,
+            from_name: 'C23 Solar website',
+            replyto: v.email,
+            botcheck: Boolean(v.botcheck),
+            ...fields,
+            'Enquiry': body,
+          }),
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok || out.success === false) throw new Error(out.message || `HTTP ${res.status}`);
+      };
+      const keys = [form.dataset.key, form.dataset.keyCopy].filter(Boolean);
+      const results = await Promise.allSettled(keys.map(send));
+      if (!results.some((r) => r.status === 'fulfilled')) throw results[0].reason;
       dialog.classList.add('is-done');
       $('quote-done').hidden = false;
       $('quote-done-close').focus();
