@@ -402,7 +402,8 @@
 
   <!-- Quote form (opens from every "Get My Free Quote" button) -->
   <dialog class="quote" id="quote" aria-labelledby="quote-title">
-    <form method="dialog" class="quote__form" id="quote-form" data-email="rob@c23solar.co.uk" novalidate>
+    <form method="dialog" class="quote__form" id="quote-form" data-email="rob@c23solar.co.uk" data-endpoint="https://api.web3forms.com/submit" data-key="" novalidate>
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="quote__close" type="button" id="quote-close" aria-label="Close">×</button>
       <div class="quote__head">
         <img src="../assets/c23-solar-logo.svg" alt="" width="40" height="45">
@@ -452,6 +453,12 @@
         <button class="btn" type="button" id="quote-next">Next</button>
       </div>
       <p class="quote__note">No obligation. We only use your details to reply to your enquiry.</p>
+      <div class="quote__done" id="quote-done" hidden>
+        <span class="quote__tick" aria-hidden="true"></span>
+        <h3>Thanks, your request is in.</h3>
+        <p>We’ll be in touch soon to talk through your options and arrange a survey. If it’s urgent, call <a href="tel:+447525743786">07525 743786</a>.</p>
+        <button class="btn" type="button" id="quote-done-close">Close</button>
+      </div>
     </form>
   </dialog>
 

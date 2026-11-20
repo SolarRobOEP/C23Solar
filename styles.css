@@ -334,6 +334,14 @@ details p { padding: 0 24px 22px; color: var(--ink-soft); max-width: 46em; }
 .quote__nav .btn { flex: 1; }
 .quote__nav .btn--ghost { flex: 0 0 auto; }
 .quote__note { font-size: .78rem; color: var(--ink-soft); text-align: center; }
+.hp { display: none; }
+.quote__status a { color: inherit; font-weight: 700; }
+.quote__done { display: grid; justify-items: center; gap: 12px; text-align: center; padding: 12px 0 4px; }
+.quote__done h3 { font-size: 1.5rem; letter-spacing: -.02em; }
+.quote__done p { color: var(--ink-soft); max-width: 30em; }
+.quote__done a { color: var(--teal-dark); font-weight: 700; white-space: nowrap; }
+.quote__tick { width: 64px; height: 64px; border-radius: 50%; background: var(--teal-pale) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8' fill='none' stroke='%230b6f5e' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/60% no-repeat; }
+.quote.is-done .quote__head p, .quote.is-done .quote__bar, .quote.is-done .quote__step, .quote.is-done .quote__status, .quote.is-done .quote__nav, .quote.is-done .quote__note { display: none; }
 
 /* ---------- Motion ---------- */
 /* Only content that starts below the first screen is hidden, and only until it scrolls into view. */
