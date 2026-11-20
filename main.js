@@ -178,9 +178,19 @@
         const out = await res.json().catch(() => ({}));
         if (!res.ok || out.success === false) throw new Error(out.message || `HTTP ${res.status}`);
       };
+      // Sent one after the other: two identical requests in the same instant can be refused as spam.
       const keys = [form.dataset.key, form.dataset.keyCopy].filter(Boolean);
-      const results = await Promise.allSettled(keys.map(send));
-      if (!results.some((r) => r.status === 'fulfilled')) throw results[0].reason;
+      const results = [];
+      for (const [i, key] of keys.entries()) {
+        if (i) await new Promise((r) => setTimeout(r, 1500));
+        results.push(await send(key).then(() => ({ ok: true }), (e) => ({ ok: false, why: String(e && e.message || e) })));
+      }
+      // Test mode (add ?test to the page address): show what Web3Forms said for each inbox.
+      if (/[?&]test\b/.test(location.search)) {
+        const names = ['C23 inbox', 'OEP inbox'];
+        $('quote-done').querySelector('p').textContent = results.map((r, i) => `${names[i] || 'Inbox ' + (i + 1)}: ${r.ok ? 'accepted' : 'refused: ' + r.why}`).join(' · ');
+      }
+      if (!results.some((r) => r.ok)) throw new Error(results[0].why);
       dialog.classList.add('is-done');
       $('quote-done').hidden = false;
       $('quote-done-close').focus();
