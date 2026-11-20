@@ -2,7 +2,7 @@
  * Pages are fetched fresh when online and fall back to the cached copy offline;
  * styles, scripts and images are served from the cache first.
  * Bump VERSION whenever any of the files below change so visitors get the update. */
-const VERSION = 'c23-v7';
+const VERSION = 'c23-v8';
 const SHELL = [
   './',
   './index.html',
