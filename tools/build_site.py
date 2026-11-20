@@ -428,8 +428,119 @@ def not_found_page(shared):
 '''
 
 
+PRIVACY_UPDATED = "20 November 2026"
+
+
+def privacy_page(shared):
+    return f'''<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Notice | C23 Solar</title>
+  <meta name="description" content="How C23 Solar collects, uses and protects your personal information when you ask for a quote or become a customer.">
+  <link rel="canonical" href="{SITE}/privacy/">
+  <meta name="theme-color" content="#181818">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  {shared["header"]}
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap legal">
+        <nav class="crumbs" aria-label="Breadcrumb" style="color:var(--ink-soft)"><a href="../" style="color:inherit">Home</a><span aria-hidden="true">›</span><span aria-current="page">Privacy notice</span></nav>
+        <p class="tag">Privacy</p>
+        <h1 style="font-size:clamp(2.2rem,5vw,3.4rem)">Privacy notice</h1>
+        <p class="legal__updated">Last updated {PRIVACY_UPDATED}</p>
+        <p>This notice explains what personal information C23 Solar collects when you contact us or ask for a quote, what we do with it, and your rights. We keep it short and plain.</p>
+
+        <h2>Who we are</h2>
+        <p>C23 Solar Limited (“C23 Solar”, “we”) is responsible for your personal information. You can contact us about anything in this notice by emailing <a href="mailto:{EMAIL}">{EMAIL}</a> or calling <a href="tel:{PHONE_INTL}">{PHONE}</a>.</p>
+
+        <h2>What we collect</h2>
+        <ul>
+          <li><b>When you request a quote on our website:</b> your name, email address, phone number and postcode, whether you own the property, the type of property, and which page of our site you sent the request from.</li>
+          <li><b>When you call, email or message us:</b> the details you give us, such as your address and your electricity usage or bills.</li>
+          <li><b>If we survey or install for you:</b> information about your property, roof and electrical system, photos taken during the survey or installation, and the details needed to quote, invoice and register your system.</li>
+        </ul>
+        <p>We don’t ask for, and don’t want, sensitive information such as health details.</p>
+
+        <h2>How we use it, and why we’re allowed to</h2>
+        <ul>
+          <li><b>To reply to your enquiry, survey your property and give you a quote.</b> You’ve asked us to do this, so we rely on taking steps at your request before entering into a contract.</li>
+          <li><b>To carry out an installation and look after your system afterwards</b>, including warranties and aftercare. This is needed to perform our contract with you.</li>
+          <li><b>To follow up on a quote you’ve had from us.</b> We rely on our legitimate interest in following up an enquiry you started. You can tell us to stop at any time.</li>
+          <li><b>To meet legal obligations</b>, such as keeping financial records and registering installations where the rules require it.</li>
+        </ul>
+        <p>We don’t sell your information, and we won’t send you marketing unless you’ve agreed to it.</p>
+
+        <h2>Who we share it with</h2>
+        <p>We use a small number of service providers to run our business. They handle your information only to provide their service to us:</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th scope="col">Provider</th><th scope="col">What they do for us</th></tr></thead>
+          <tbody>
+            <tr><td>Web3Forms</td><td>Delivers quote requests from our website to our inbox.</td></tr>
+            <tr><td>Microsoft (Microsoft 365)</td><td>Our email.</td></tr>
+            <tr><td>Anthropic</td><td>Hosts the private tool we use to keep track of enquiries and customers.</td></tr>
+            <tr><td>GitHub</td><td>Hosts this website. Like any web host, it handles basic technical information such as your IP address when you visit.</td></tr>
+            <tr><td>Google Fonts</td><td>Supplies the typeface used on this website, so your browser connects to Google when pages load.</td></tr>
+          </tbody>
+        </table></div>
+        <p>If you go ahead with an installation, we may also share the necessary details with suppliers, installers and scaffolders working on your job, with your electricity network operator to notify them of the installation, and with certification or warranty bodies where that’s required.</p>
+        <p>Some of these providers may process information outside the UK. Where they do, we rely on the safeguards UK law requires, such as the UK’s adequacy regulations or approved contract clauses.</p>
+
+        <h2>How long we keep it</h2>
+        <ul>
+          <li><b>Enquiries that don’t go ahead:</b> up to 24 months from our last contact, then deleted.</li>
+          <li><b>Customers:</b> for as long as needed to provide warranties and aftercare, and at least six years after the work for tax and accounting purposes.</li>
+        </ul>
+
+        <h2>Cookies and your device</h2>
+        <p>We don’t use advertising or analytics cookies, and we don’t track you across other websites. So that the site loads quickly and can be added to your home screen as an app, your browser keeps a copy of our pages and images on your device. You can clear it at any time in your browser settings.</p>
+
+        <h2>Your rights</h2>
+        <p>You can ask us to:</p>
+        <ul>
+          <li>give you a copy of the information we hold about you;</li>
+          <li>correct anything that’s wrong;</li>
+          <li>delete your information, or stop or limit how we use it;</li>
+          <li>stop following up with you; and</li>
+          <li>send your information to you or another organisation in a portable format.</li>
+        </ul>
+        <p>To use any of these rights, email <a href="mailto:{EMAIL}">{EMAIL}</a>. We’ll reply within one month.</p>
+
+        <h2>Complaints</h2>
+        <p>If you’re unhappy with how we’ve handled your information, please tell us first so we can put it right. You can also complain to the Information Commissioner’s Office (ICO) at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk/make-a-complaint</a> or on 0303 123 1113.</p>
+
+        <h2>Changes to this notice</h2>
+        <p>We’ll update this page if anything changes, and change the date at the top.</p>
+      </div>
+    </section>
+  </main>
+
+  {shared["footer"]}
+
+  {shared["mobilebar"]}
+
+  {shared["dialog"]}
+
+  <script src="../main.js" data-root="../" defer></script>
+</body>
+</html>
+'''
+
+
 def sitemap():
-    urls = [(f"{SITE}/", "1.0")] + [(f"{SITE}/solar-panels-{a['slug']}/", "0.8") for a in AREAS]
+    urls = [(f"{SITE}/", "1.0")] + [(f"{SITE}/solar-panels-{a['slug']}/", "0.8") for a in AREAS] + [(f"{SITE}/privacy/", "0.3")]
     body = "".join(f"  <url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{p}</priority></url>\n" for u, p in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}</urlset>\n'
 
@@ -452,7 +563,7 @@ def main():
         "mobilebar": between(page, '<div class="mobilebar">', "</div>"),
         "dialog": between(page, "<!-- Quote form", "</dialog>"),
     }
-    for prefix, build in (("../", lambda s: [(f"solar-panels-{a['slug']}/index.html", area_page(a, s)) for a in AREAS]),
+    for prefix, build in (("../", lambda s: [(f"solar-panels-{a['slug']}/index.html", area_page(a, s)) for a in AREAS] + [("privacy/index.html", privacy_page(s))]),
                           ("/", lambda s: [("404.html", not_found_page(s))])):
         shared = {k: relink(v, prefix) for k, v in raw.items()}
         for rel, text in build(shared):
