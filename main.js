@@ -89,6 +89,7 @@
   function openQuote(e) {
     if (typeof dialog.showModal !== 'function') return; // old browsers follow the link
     e.preventDefault();
+    if (dialog.classList.contains('is-done')) resetQuote();
     if (!dialog.open) { show(0); dialog.showModal(); steps[0].querySelector('input').focus(); }
   }
   document.querySelectorAll('[data-quote]').forEach((a) => a.addEventListener('click', openQuote));
@@ -121,19 +122,72 @@
     return true;
   }
 
-  function advance() {
-    if (!stepValid(steps[current])) return;
+  function resetQuote() {
+    form.reset();
+    dialog.classList.remove('is-done');
+    $('quote-done').hidden = true;
+    next.disabled = false;
+  }
+
+  function mailtoFallback(subject, body) {
+    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  let sending = false;
+  async function advance() {
+    if (sending || !stepValid(steps[current])) return;
     if (current < steps.length - 1) { show(current + 1); return; }
     const v = Object.fromEntries(new FormData(form));
     const name = `${v.first} ${v.last}`.trim();
-    const body = [
-      `Name: ${name}`, `Phone: ${v.phone}`, `Email: ${v.email}`, `Postcode: ${v.postcode}`, '',
-      `Owns the property: ${v.owner}`, `Property type: ${v.property}`,
-    ].join('\n');
-    location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Free quote request — ${name}, ${v.postcode}`)}&body=${encodeURIComponent(body)}`;
-    status.textContent = 'Opening your email app — press send to reach us.';
-    status.classList.add('ok');
+    const subject = `Free quote request — ${name}, ${v.postcode.toUpperCase()}`;
+    const fields = {
+      'Name': name, 'Phone': v.phone, 'Email': v.email, 'Postcode': v.postcode.toUpperCase(),
+      'Owns the property': v.owner, 'Property type': v.property, 'Sent from': location.pathname,
+    };
+    const body = Object.entries(fields).map(([k, x]) => `${k}: ${x}`).join('\n');
+
+    // No form key yet: hand over to the visitor's email app, as before.
+    if (!form.dataset.key) {
+      mailtoFallback(subject, body);
+      status.textContent = 'Opening your email app — press send to reach us.';
+      status.classList.add('ok');
+      return;
+    }
+
+    sending = true;
+    next.disabled = true;
+    next.textContent = 'Sending…';
+    status.textContent = '';
+    try {
+      const res = await fetch(form.dataset.endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: form.dataset.key,
+          subject,
+          from_name: 'C23 Solar website',
+          replyto: v.email,
+          botcheck: Boolean(v.botcheck),
+          ...fields,
+          'Enquiry': body,
+        }),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || out.success === false) throw new Error(out.message || `HTTP ${res.status}`);
+      dialog.classList.add('is-done');
+      $('quote-done').hidden = false;
+      $('quote-done-close').focus();
+    } catch (err) {
+      status.innerHTML = 'Sorry, that didn’t send. Please call <a href="tel:+447525743786">07525 743786</a> or <a href="#" id="quote-mail">email your details</a> instead.';
+      const link = $('quote-mail');
+      if (link) link.addEventListener('click', (e) => { e.preventDefault(); mailtoFallback(subject, body); });
+    } finally {
+      sending = false;
+      next.disabled = false;
+      next.textContent = 'Get my free quote';
+    }
   }
+  $('quote-done-close').addEventListener('click', () => { dialog.close(); resetQuote(); });
   next.addEventListener('click', advance);
   back.addEventListener('click', () => show(current - 1));
   form.addEventListener('submit', (e) => { e.preventDefault(); advance(); });
