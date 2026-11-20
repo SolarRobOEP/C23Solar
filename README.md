@@ -26,5 +26,5 @@ The earlier scroll-driven "day of sunlight" design is in the git history.
 
 ## Hosting
 
-The live site is served by GitHub Pages from the `gh-pages` branch. After changing any CSS or JS, bump `VERSION` in `sw.js` so installed copies pick up the change.
+The live site is served by GitHub Pages from the `gh-pages` branch at www.c23solar.co.uk (set by the `CNAME` file; DNS is at GoDaddy: four A records for `@` to GitHub's Pages addresses and a `www` CNAME to `solarroboep.github.io`). Copy `CNAME` into every `gh-pages` publish or the custom domain is dropped. After changing any CSS or JS, bump `VERSION` in `sw.js` so installed copies pick up the change.
 
